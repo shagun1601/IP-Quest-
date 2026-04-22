@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - IPQuest</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="stars" id="stars"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">⚖️</div>IPQuest
+  </a>
+  <div class="nav-links" id="auth-links">
+    <a href="learn.html">📖 Learn</a>
+    <a href="dashboard.html">🎮 Dashboard</a>
+    <a href="leaderboard.html">🏆 Leaderboard</a>
+    <a class="nav-btn" href="#" onclick="logout()">Logout</a>
+  </div>
+</nav>
+
+<!-- PROFILE -->
+<section id="profile" style="padding-top:120px;">
+  <div class="profile-card">
+    <div class="profile-top">
+      <div class="profile-avatar" id="profileAvatar">🎓</div>
+      <div>
+        <div class="profile-name" id="profileName">Loading...</div>
+        <div class="profile-level" id="profileLevel">⭐ Level 1 — Beginner</div>
+      </div>
+    </div>
+    <div class="p-stats">
+      <div class="p-stat-box"><div class="p-stat-num" id="statXP">0</div><div class="p-stat-label">Total XP</div></div>
+      <div class="p-stat-box"><div class="p-stat-num" id="statGames">0</div><div class="p-stat-label">Games Played</div></div>
+      <div class="p-stat-box"><div class="p-stat-num" id="statCorrect">0</div><div class="p-stat-label">Correct Answers</div></div>
+    </div>
+    <div class="xp-bar-wrap">
+      <div class="xp-bar-labels"><span id="xpLabel">0 / 200 XP</span><span id="xpPct">0%</span></div>
+      <div class="xp-bar-track"><div class="xp-bar-fill" id="xpFill"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GAMES -->
+<section id="games" style="padding-top:40px;">
+  <div class="section-header">
+    <div class="section-tag">🎮 Games</div>
+    <h2 class="section-title">Choose Your <span class="gradient-text">Challenge</span></h2>
+  </div>
+  <div class="games-grid">
+    <div class="game-card" style="--accent:#00f5c4" onclick="window.location.href='game.html?type=quiz'">
+      <span class="gc-emoji">🧠</span><span class="gc-badge hot">🔥 HOT</span>
+      <div class="gc-title">IP Knowledge Quiz</div>
+      <div class="gc-desc">Test your understanding with 10 challenging questions across all IP types.</div>
+      <div class="gc-meta"><span class="gc-tag">📚 10 Questions</span><span class="gc-tag">⭐ 200 XP</span></div>
+      <button class="gc-play">▶ Play Now</button>
+    </div>
+    <div class="game-card" style="--accent:#6c63ff" onclick="window.location.href='game.html?type=match'">
+      <span class="gc-emoji">🔗</span><span class="gc-badge new-badge">✨ NEW</span>
+      <div class="gc-title">Match the Rights</div>
+      <div class="gc-desc">Match IP types to their definitions and real-world examples.</div>
+      <div class="gc-meta"><span class="gc-tag">🎯 Matching</span><span class="gc-tag">⭐ 150 XP</span></div>
+      <button class="gc-play">▶ Play Now</button>
+    </div>
+    <div class="game-card" style="--accent:#ffd93d" onclick="window.location.href='game.html?type=scenario'">
+      <span class="gc-emoji">📖</span>
+      <div class="gc-title">Real Life Scenarios</div>
+      <div class="gc-desc">Navigate real-world IP dilemmas. Make the right decision and earn XP!</div>
+      <div class="gc-meta"><span class="gc-tag">🌍 Real World</span><span class="gc-tag">⭐ 175 XP</span></div>
+      <button class="gc-play">▶ Play Now</button>
+    </div>
+    <div class="game-card" style="--accent:#4ecdc4" onclick="window.location.href='game.html?type=drag'">
+      <span class="gc-emoji">🧩</span>
+      <div class="gc-title">Fill in the Blanks</div>
+      <div class="gc-desc">Click or drag the correct IP terms to complete key facts and definitions.</div>
+      <div class="gc-meta"><span class="gc-tag">✍️ Fill-In</span><span class="gc-tag">⭐ 125 XP</span></div>
+      <button class="gc-play">▶ Play Now</button>
+    </div>
+    <div class="game-card" style="--accent:#ff6b6b" onclick="window.location.href='game.html?type=tf'">
+      <span class="gc-emoji">⚡</span>
+      <div class="gc-title">True or False Rush</div>
+      <div class="gc-desc">Quick-fire true/false statements about IP law. Race against the clock!</div>
+      <div class="gc-meta"><span class="gc-tag">⏱️ Timed</span><span class="gc-tag">⭐ 100 XP</span></div>
+      <button class="gc-play">▶ Play Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" style="padding-bottom:100px;">
+  <div class="section-header">
+    <div class="section-tag">🏅 Achievements</div>
+    <h2 class="section-title">Earn <span class="gradient-text">Badges</span></h2>
+  </div>
+  <div class="ach-grid" id="ach-grid"></div>
+</section>
+
+<!-- DANGER ZONE: Delete Account -->
+<div style="position:relative;z-index:1;padding:0 5% 80px;max-width:900px;margin:0 auto;">
+  <div style="
+    background:rgba(244,63,94,0.06);
+    border:2px solid rgba(244,63,94,0.35);
+    border-radius:20px;
+    padding:32px 36px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:24px;
+    box-shadow: 0 4px 24px rgba(244,63,94,0.1);
+  ">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <span style="font-size:1.5rem;">⚠️</span>
+        <h3 style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.25rem;color:#F43F5E;margin:0;">Danger Zone</h3>
+      </div>
+      <p style="color:var(--text-dim);font-size:0.93rem;line-height:1.65;max-width:500px;margin:0;">
+        Permanently deletes your account, XP, achievements, game history, and removes you from the leaderboard.
+        <strong style="color:var(--text);display:block;margin-top:6px;">⚠️ This action cannot be undone.</strong>
+      </p>
+    </div>
+    <button id="deleteAccountBtn" onclick="openDeleteModal()" style="
+      padding:14px 30px;
+      border-radius:14px;
+      font-weight:800;
+      font-size:1rem;
+      background:#F43F5E;
+      color:#fff;
+      border:none;
+      cursor:pointer;
+      font-family:'Nunito',sans-serif;
+      transition:all 0.25s;
+      white-space:nowrap;
+      box-shadow:0 4px 16px rgba(244,63,94,0.4);
+      letter-spacing:0.3px;
+    "
+    onmouseover="this.style.background='#E11D48';this.style.boxShadow='0 8px 28px rgba(244,63,94,0.55)';this.style.transform='translateY(-2px)';"
+    onmouseout="this.style.background='#F43F5E';this.style.boxShadow='0 4px 16px rgba(244,63,94,0.4)';this.style.transform='none';">
+      🗑️ Delete My Account
+    </button>
+  </div>
+</div>
+
+
+<!-- DELETE ACCOUNT CONFIRMATION MODAL -->
+<div id="deleteModal" style="
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(0,0,0,0.6); backdrop-filter:blur(8px);
+  align-items:center; justify-content:center;
+">
+  <div style="
+    background:var(--bg2); border:1px solid rgba(244,63,94,0.3);
+    border-radius:24px; padding:48px 40px; max-width:460px; width:90%;
+    box-shadow:0 30px 80px rgba(0,0,0,0.5); animation: slideUp 0.3s ease both;
+    position:relative;
+  ">
+    <div style="text-align:center; margin-bottom:28px;">
+      <div style="font-size:3.5rem; margin-bottom:16px;">🗑️</div>
+      <h2 style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.6rem;color:#F43F5E;margin-bottom:12px;">Delete Account?</h2>
+      <p style="color:var(--text-dim);font-size:0.97rem;line-height:1.7;">
+        This will permanently delete your account, all your XP, achievements, game history, and remove you from the leaderboard.<br><br>
+        <strong style="color:var(--text);">Type your email to confirm:</strong>
+      </p>
+    </div>
+    <input id="deleteConfirmEmail" type="email" placeholder="Enter your email address"
+      class="form-input" style="width:100%;margin-bottom:20px;"
+      oninput="checkDeleteConfirm()" />
+    <div style="display:flex;gap:12px;">
+      <button onclick="closeDeleteModal()" style="
+        flex:1; padding:14px; border-radius:12px; font-weight:700; font-size:1rem;
+        background:var(--card); color:var(--text-dim); border:1px solid var(--border);
+        cursor:pointer; font-family:'Nunito',sans-serif; transition:all 0.2s;
+      ">Cancel</button>
+      <button id="confirmDeleteBtn" onclick="doDeleteAccount()" disabled style="
+        flex:1; padding:14px; border-radius:12px; font-weight:800; font-size:1rem;
+        background:rgba(244,63,94,0.2); color:#F43F5E; border:2px solid rgba(244,63,94,0.4);
+        cursor:not-allowed; font-family:'Nunito',sans-serif; transition:all 0.3s;
+        opacity:0.5;
+      ">🗑️ Yes, Delete</button>
+    </div>
+  </div>
+</div>
+
+<div id="toasts"></div>
+
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

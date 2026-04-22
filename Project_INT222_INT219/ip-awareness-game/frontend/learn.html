@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn - IPQuest</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.learn-header { text-align: center; margin-top: 140px; margin-bottom: 50px; }
+.learn-hero-title { font-family: 'Nunito', sans-serif; font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; }
+.learn-container { max-width: 1100px; margin: 0 auto; padding: 0 5% 100px; }
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">⚖️</div>IPQuest
+  </a>
+  <div class="nav-links" id="auth-links">
+    <a href="learn.html">📖 Learn</a>
+    <a href="login.html">Login</a>
+    <a href="register.html" class="nav-btn">Sign Up Free</a>
+  </div>
+</nav>
+
+<div class="learn-header">
+  <div class="section-tag">Library</div>
+  <h1 class="learn-hero-title">The <span class="gradient-text">Knowledge</span> Vault</h1>
+  <p class="section-desc">Before you take the quizzes, study up on the four core pillars of Intellectual Property. Master these concepts to protect your creative ideas!</p>
+</div>
+
+<div class="learn-container">
+  <div class="learn-grid">
+    
+    <!-- COPYRIGHT -->
+    <div class="learn-card">
+      <span class="learn-icon">©️</span>
+      <h3 class="learn-title">Copyright</h3>
+      <p class="learn-desc">Copyright protects original creative works such as books, music, art, software code, and movies. It gives the creator exclusive rights to reproduce, distribute, and perform their work.</p>
+      <p class="learn-desc"><strong>Duration:</strong> Usually the life of the author + 60 years (in India).</p>
+      <div class="learn-example">"If you paint a beautiful picture or write a poem, you automatically own the copyright to it the moment it is created on paper."</div>
+    </div>
+
+    <!-- TRADEMARK -->
+    <div class="learn-card">
+      <span class="learn-icon">™️</span>
+      <h3 class="learn-title">Trademark</h3>
+      <p class="learn-desc">A trademark is a symbol, word, or design that identifies and distinguishes the source of goods or services. It protects brand identity and prevents consumer confusion.</p>
+      <p class="learn-desc"><strong>Duration:</strong> 10 years, but can be renewed indefinitely as long as it's used.</p>
+      <div class="learn-example">"The Nike 'Swoosh' logo and the name 'Coca-Cola' are famous trademarks that instantly tell you who made the product."</div>
+    </div>
+
+    <!-- PATENT -->
+    <div class="learn-card">
+      <span class="learn-icon">💡</span>
+      <h3 class="learn-title">Patent</h3>
+      <p class="learn-desc">Patents protect new and useful inventions, such as machines, processes, or chemical compositions. In exchange for publicly sharing how the invention works, the government grants exclusive rights.</p>
+      <p class="learn-desc"><strong>Duration:</strong> 20 years from the filing date.</p>
+      <div class="learn-example">"If you invent a completely new type of solar panel that is twice as efficient, a patent stops others from building and selling your design."</div>
+    </div>
+
+    <!-- TRADE SECRET -->
+    <div class="learn-card">
+      <span class="learn-icon">🔒</span>
+      <h3 class="learn-title">Trade Secret</h3>
+      <p class="learn-desc">Trade secrets consist of confidential business information that provides a competitive edge (e.g., recipes, algorithms, strategies). Unlike patents, you do not disclose the secret publicly.</p>
+      <p class="learn-desc"><strong>Duration:</strong> Lasts indefinitely as long as the secret remains confidential.</p>
+      <div class="learn-example">"KFC's 11 herbs and spices recipe is a trade secret. If they patented it, the recipe would become public knowledge in 20 years."</div>
+    </div>
+
+    <!-- FAIR USE -->
+    <div class="learn-card" style="grid-column: 1 / -1;">
+      <span class="learn-icon">⚖️</span>
+      <h3 class="learn-title">What is Fair Use?</h3>
+      <p class="learn-desc">Fair Use (or Fair Dealing in some regions) is an exception to copyright law. It allows limited use of copyrighted material without requiring permission from the rights holder, specifically for purposes like education, criticism, news reporting, or parody.</p>
+      <div class="learn-example">"Quoting two sentences from a Harry Potter book in your school essay for analysis is perfectly legal under Fair Use."</div>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    utils.setupAuthNav();
+  });
+</script>
+</body>
+</html>

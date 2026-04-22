@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPQuest – Intellectual Property Adventure</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">⚖️</div>IPQuest
+  </a>
+  <div class="nav-links" id="auth-links">
+    <a href="learn.html">📖 Learn</a>
+    <a href="login.html">Login</a>
+    <a href="register.html" class="nav-btn">Sign Up Free</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-badge"><span class="pulse"></span>For School Students · Free to Play</div>
+  <h1 class="hero-title">Master <span class="gradient-text">Intellectual</span><br><span class="gradient-text">Property</span> Rights</h1>
+  <p class="hero-sub">Learn copyright, trademarks, patents & more through fun interactive games. Level up your knowledge and protect your creative ideas!</p>
+  <div class="hero-cta">
+    <button class="btn-primary" onclick="window.location.href='register.html'">🎮 Start Playing</button>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num" id="totalPlayers">1,204</div><div class="stat-label">STUDENTS LEARNING</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">GAMES & QUIZZES</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">IP CATEGORIES</div></div>
+  </div>
+  <div class="floating-card fc1"><div class="fc-icon">©️</div><div><div class="fc-text">Copyright</div><div class="fc-sub">Protects your work</div></div></div>
+  <div class="floating-card fc2"><div class="fc-icon">™️</div><div><div class="fc-text">Trademark</div><div class="fc-sub">Brand identity</div></div></div>
+  <div class="floating-card fc3"><div class="fc-icon">💡</div><div><div class="fc-text">Patent</div><div class="fc-sub">New inventions</div></div></div>
+  <div class="floating-card fc4"><div class="fc-icon">🔒</div><div><div class="fc-text">Trade Secret</div><div class="fc-sub">Confidential info</div></div></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand-side">
+      <div class="footer-brand-logo"><div class="logo-icon">⚖️</div>IPQuest</div>
+      <div class="footer-divider"></div>
+      <p class="footer-desc">An interactive educational platform helping school students understand and respect Intellectual Property rights.</p>
+    </div>
+    <div class="footer-links">
+      <a href="learn.html">📖 Learn</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Sign Up</a>
+      <a href="leaderboard.html">🏆 Leaderboard</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 IPQuest — Educational IP Awareness Platform</div>
+    <div style="color:var(--muted);font-size:.79rem">Made with ❤️ for students</div>
+  </div>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+</body>
+</html>

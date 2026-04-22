@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - IPQuest</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="stars" id="stars"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">⚖️</div>IPQuest
+  </a>
+  <div class="nav-links" id="auth-links">
+    <a href="learn.html">📖 Learn</a>
+    <a href="login.html">Login</a>
+    <a href="register.html" class="nav-btn">Sign Up Free</a>
+  </div>
+</nav>
+
+<div class="auth-container">
+  <div class="auth-box">
+    <h2 class="auth-title">Welcome Back</h2>
+    <div class="profile-form">
+      <div class="form-row">
+        <label class="form-label">Email</label>
+        <input class="form-input" id="email" type="email" placeholder="you@example.com"/>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Password</label>
+        <input class="form-input" id="password" type="password" placeholder="••••••••"/>
+      </div>
+      <button class="save-profile-btn" onclick="handleLogin()">Login to Dashboard</button>
+    </div>
+    <div class="auth-switch">
+      Don't have an account? <a href="register.html">Sign up</a>
+    </div>
+  </div>
+</div>
+
+<div id="toasts"></div>
+
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>
