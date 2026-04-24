@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Play - IPQuest</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.game-container { max-width: 800px; margin: 120px auto 50px; padding: 20px; }
+.game-section { display: none; background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 36px; }
+.game-section.active { display: block; animation: slideUp .4s cubic-bezier(.34,1.56,.64,1) both; }
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">⚖️</div>IPQuest
+  </a>
+  <div class="nav-links" id="auth-links">
+    <a href="learn.html">📖 Learn</a>
+    <a href="dashboard.html">🎮 Dashboard</a>
+    <a href="leaderboard.html">🏆 Leaderboard</a>
+    <a class="nav-btn" href="#" onclick="logout()">Logout</a>
+  </div>
+</nav>
+
+<div class="game-container">
+  
+  <!-- QUIZ GAME -->
+  <div id="game-quiz" class="game-section">
+    <div class="modal-header">
+      <div class="modal-title">🧠 IP Knowledge Quiz</div>
+      <button class="modal-close" onclick="window.location.href='dashboard.html'">✕</button>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="quizProg" style="width:0%"></div></div>
+    <div id="quiz-play">
+      <div class="score-row">
+        <div class="q-num" id="qNum">Question 1 of 10</div>
+        <div class="score-pill">⭐ <span id="qScore">0</span> pts</div>
+      </div>
+      <div class="question-card"><div class="question-text" id="qText">Loading…</div></div>
+      <div class="options-grid" id="optGrid"></div>
+      <div class="feedback-box" id="qFeedback"></div>
+      <button class="next-btn" id="qNextBtn" onclick="nextQuestion()">Next Question →</button>
+    </div>
+    <div class="results-screen" id="quiz-results">
+      <span class="result-emoji" id="qResEmoji">🏆</span>
+      <div class="result-score"><span id="qResFinal">0</span> / 10</div>
+      <div class="result-msg" id="qResMsg"></div>
+      <div class="xp-gained">+<span id="qResXP">0</span> XP Earned! 🌟</div>
+      <button class="replay-btn" onclick="startQuiz()">🔁 Play Again</button>
+      <button class="done-btn" onclick="window.location.href='dashboard.html'">Done ✓</button>
+    </div>
+  </div>
+
+  <!-- MATCH GAME -->
+  <div id="game-match" class="game-section">
+    <div class="modal-header">
+      <div class="modal-title">🔗 Match the Rights</div>
+      <button class="modal-close" onclick="window.location.href='dashboard.html'">✕</button>
+    </div>
+    <div id="match-play">
+      <div class="score-row">
+        <div class="q-num">Match each IP type to its description</div>
+        <div class="score-pill">✓ <span id="matchCount">0</span>/6</div>
+      </div>
+      <div class="match-cols">
+        <div><div class="match-col-title">IP Type</div><div id="matchLeft"></div></div>
+        <div><div class="match-col-title">Description</div><div id="matchRight"></div></div>
+      </div>
+      <div class="feedback-box" id="matchFB"></div>
+    </div>
+    <div class="results-screen" id="match-results">
+      <span class="result-emoji">🔗</span>
+      <div class="result-score">All Matched!</div>
+      <div class="result-msg">You connected all IP types correctly! Well done.</div>
+      <div class="xp-gained">+<span id="matchXP">150</span> XP Earned! 🌟</div>
+      <button class="replay-btn" onclick="startMatch()">🔁 Play Again</button>
+      <button class="done-btn" onclick="window.location.href='dashboard.html'">Done ✓</button>
+    </div>
+  </div>
+
+  <!-- SCENARIO GAME -->
+  <div id="game-scenario" class="game-section">
+    <div class="modal-header">
+      <div class="modal-title">📖 Real Life Scenarios</div>
+      <button class="modal-close" onclick="window.location.href='dashboard.html'">✕</button>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="scenProg" style="width:0%"></div></div>
+    <div id="scen-play">
+      <div class="score-row">
+        <div class="q-num" id="scenNum">Scenario 1 of 6</div>
+        <div class="score-pill">⭐ <span id="scenScore">0</span> pts</div>
+      </div>
+      <div class="scenario-story" id="scenStory"></div>
+      <div class="scenario-q" id="scenQ"></div>
+      <div class="scenario-opts" id="scenOpts"></div>
+      <div class="feedback-box" id="scenFB"></div>
+      <button class="next-btn" id="scenNext" onclick="nextScenario()">Next Scenario →</button>
+    </div>
+    <div class="results-screen" id="scen-results">
+      <span class="result-emoji">📖</span>
+      <div class="result-score"><span id="scenFinal">0</span> / 6</div>
+      <div class="result-msg" id="scenMsg"></div>
+      <div class="xp-gained">+<span id="scenXP">0</span> XP Earned! 🌟</div>
+      <button class="replay-btn" onclick="startScenario()">🔁 Play Again</button>
+      <button class="done-btn" onclick="window.location.href='dashboard.html'">Done ✓</button>
+    </div>
+  </div>
+
+  <!-- DRAG GAME -->
+  <div id="game-drag" class="game-section">
+    <div class="modal-header">
+      <div class="modal-title">🧩 Fill in the Blanks</div>
+      <button class="modal-close" onclick="window.location.href='dashboard.html'">✕</button>
+    </div>
+    <div id="drag-play">
+      <div class="drag-hint">🖱️ <b>Click a word</b> to select it (glows green), then <b>click a blank</b> to fill it. Click a filled blank to remove it.</div>
+      <div class="word-bank" id="wordBank"></div>
+      <div class="fill-sentences" id="fillSents"></div>
+      <div class="feedback-box" id="dragFB"></div>
+      <button class="check-answers-btn" onclick="checkDrag()" id="checkDragBtn">✓ Check My Answers</button>
+    </div>
+    <div class="results-screen" id="drag-results" style="margin-top:20px">
+      <span class="result-emoji">🧩</span>
+      <div class="result-score"><span id="dragFinal">0</span> correct</div>
+      <div class="xp-gained">+<span id="dragXP">0</span> XP Earned! 🌟</div>
+      <button class="replay-btn" onclick="startDrag()">🔁 Play Again</button>
+      <button class="done-btn" onclick="window.location.href='dashboard.html'">Done ✓</button>
+    </div>
+  </div>
+
+  <!-- TRUE/FALSE GAME -->
+  <div id="game-tf" class="game-section">
+    <div class="modal-header">
+      <div class="modal-title">⚡ True or False Rush</div>
+      <button class="modal-close" onclick="window.location.href='dashboard.html'">✕</button>
+    </div>
+    <div class="tf-timer-display" id="tf-timer-display">
+      <div class="tf-timer-num" id="tfTimer">30</div>
+      <div class="tf-timer-label">SECONDS LEFT</div>
+    </div>
+    <div class="progress-bar" id="tf-timer-bar-wrap"><div class="progress-fill" id="tfTimerBar" style="width:100%"></div></div>
+    <div id="tf-play">
+      <div class="score-row">
+        <div class="q-num" id="tfNum">Statement 1 of 8</div>
+        <div class="score-pill">⚡ <span id="tfScore">0</span> pts</div>
+      </div>
+      <div class="question-card" style="min-height:90px;display:flex;align-items:center;">
+        <div class="question-text" id="tfText" style="text-align:center;width:100%;"></div>
+      </div>
+      <div class="tf-buttons">
+        <button class="tf-btn-true" id="tfTrueBtn" onclick="tfAnswer(true)">✓ TRUE</button>
+        <button class="tf-btn-false" id="tfFalseBtn" onclick="tfAnswer(false)">✗ FALSE</button>
+      </div>
+      <div class="feedback-box" id="tfFB"></div>
+    </div>
+    <div class="results-screen" id="tf-results">
+      <span class="result-emoji">⚡</span>
+      <div class="result-score"><span id="tfFinal">0</span> pts</div>
+      <div class="result-msg" id="tfMsg"></div>
+      <div class="xp-gained">+<span id="tfXP">0</span> XP Earned! 🌟</div>
+      <button class="replay-btn" onclick="startTF()">🔁 Play Again</button>
+      <button class="done-btn" onclick="window.location.href='dashboard.html'">Done ✓</button>
+    </div>
+  </div>
+
+</div>
+
+<div id="toasts"></div>
+
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>

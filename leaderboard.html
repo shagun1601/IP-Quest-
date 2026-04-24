@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaderboard - IPQuest</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="stars" id="stars"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">⚖️</div>IPQuest
+  </a>
+  <div class="nav-links" id="auth-links">
+    <a href="learn.html">📖 Learn</a>
+    <a href="dashboard.html">🎮 Dashboard</a>
+    <a href="leaderboard.html">🏆 Leaderboard</a>
+    <a class="nav-btn" href="#" onclick="logout()">Logout</a>
+  </div>
+</nav>
+
+<section id="leaderboard" style="padding-top:120px;">
+  <div class="section-header">
+    <div class="section-tag">🏆 Rankings</div>
+    <h2 class="section-title">Top <span class="gradient-text">IP Champions</span></h2>
+    <p class="section-desc">Compete with students worldwide and climb the leaderboard.</p>
+  </div>
+  <div class="lb-wrap">
+    <div class="lb-head"><div class="lb-head-title">🏆 Global Leaderboard</div><div style="font-size:.8rem;color:var(--muted)">Updated live</div></div>
+    <div id="lb-list">
+      <div style="padding: 20px; text-align: center;">Loading...</div>
+    </div>
+  </div>
+</section>
+
+<div id="toasts"></div>
+
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/leaderboard.js"></script>
+</body>
+</html>
